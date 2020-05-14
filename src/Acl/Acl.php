@@ -113,7 +113,7 @@ class Acl implements AclInterface {
 
 	/**
 	 * Returns all the resources as an array
-	 * @param string|null $match [optional] When given, only the resources which match the $match will be returned
+	 * @param null|string $match [optional] When given, only the resources which match the $match will be returned
 	 * @return array
 	 */
 	public function getResources(string $match = null): array {

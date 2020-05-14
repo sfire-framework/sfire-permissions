@@ -1,22 +1,20 @@
 {
     "name": "sfire-framework/sfire-permissions",
     "description": "ACL specifies which users/roles or system processes are granted access to resources, as well as what operations are allowed on given resources.",
+    "homepage": "https://sfire.io",
     "keywords": [
-        "Framework",
-        "sFire",
-        "ACL",
-        "Permissions",
-        "Roles",
-        "Resources"
+        "framework",
+        "sfire",
+        "acl",
+        "permissions",
+        "roles",
+        "resources"
     ],
     "license": "BSD-3-Clause",
     "authors": [{
         "name": "Kris Kuiper",
         "email": "kris@sfire.io"
     }],
-    "support": {
-        "docs": "https://sfire.io/docs/latest/permissions"
-    },
     "require": {
         "php": ">=7.4"
     },

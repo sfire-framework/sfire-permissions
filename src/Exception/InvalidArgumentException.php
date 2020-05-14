@@ -7,6 +7,8 @@
  * @license   http://sfire.io/license BSD 3-CLAUSE LICENSE
  */
 
+declare(strict_types=1);
+
 namespace sFire\Permissions\Exception;
 
 
@@ -14,5 +16,5 @@ namespace sFire\Permissions\Exception;
  * Class InvalidArgumentException
  * @package sFire\Permissions
  */
-class InvalidArgumentException extends \InvalidArgumentException implements InterfaceException {
+class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface {
 }

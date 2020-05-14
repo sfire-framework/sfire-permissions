@@ -96,7 +96,7 @@ class Role {
 
 	/**
 	 * Retrieve all resources or all matched resources if $match is given as a Regex
-	 * @param string|null $match A Regex string to filter the resources on resource name
+	 * @param null|string $match A Regex string to filter the resources on resource name
 	 * @return array Containing all the found resources
 	 */
 	public function getResources(string $match = null): array {

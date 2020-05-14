@@ -7,10 +7,10 @@ The current version is 1.0.0
 
 
 ### Installation
-
-
-
-
+Run the following to install this library:
+```
+$ composer require sfire-framework/sfire-permissions
+```
 
 
 ### Questions and Feedback

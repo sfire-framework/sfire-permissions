@@ -13,7 +13,7 @@ namespace sFire\Permissions;
 
 
 /**
- * Interface InterfaceAcl
+ * Interface AclInterface
  * @package sFire\Permissions
  */
 interface AclInterface {

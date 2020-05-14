@@ -7,12 +7,14 @@
  * @license   http://sfire.io/license BSD 3-CLAUSE LICENSE
  */
 
+declare(strict_types=1);
+
 namespace sFire\Permissions\Exception;
 
 
 /**
- * Interface InterfaceException
+ * Interface ExceptionInterface
  * @package sFire\Permissions
  */
-interface InterfaceException {
+interface ExceptionInterface {
 }
