@@ -23,7 +23,7 @@ interface AclInterface {
      * Returns all the roles as an array
      * @return array
      */
-	public function getRoles(): array;
+    public function getRoles(): array;
 
 
     /**
@@ -32,7 +32,7 @@ interface AclInterface {
      * @param array $resources All the resources that the role is allowed or denied
      * @param bool $allowed Bool True to allow the role to the given resources, False if role is denied to given resources
      */
-	public function addRole(string $role, ?array $resources = null, bool $allowed = true);
+    public function addRole(string $role, ?array $resources = null, bool $allowed = true);
 
 
     /**
@@ -40,7 +40,7 @@ interface AclInterface {
      * @param string $role The name of the role
      * @return bool Returns true if successfully removed, false if role could not be found
      */
-	public function removeRole(string $role): bool;
+    public function removeRole(string $role): bool;
 
 
     /**
@@ -49,7 +49,7 @@ interface AclInterface {
      * @param string $resource The name of the resource
      * @return bool True if role is allowed, false if is denied
      */
-	public function isAllowed(string $role, string $resource): bool;
+    public function isAllowed(string $role, string $resource): bool;
 
 
     /**
@@ -58,7 +58,7 @@ interface AclInterface {
      * @param string $resource The name of the resource
      * @return bool True if role is denied, false if is allowed
      */
-	public function isDenied(string $role, string $resource): bool;
+    public function isDenied(string $role, string $resource): bool;
 
 
     /**
@@ -66,7 +66,7 @@ interface AclInterface {
      * @param string|array $roles A single role name or an array with role names
      * @param string|array $resources A single resource or an array with resources
      */
-	public function allow($roles, $resources);
+    public function allow($roles, $resources);
 
 
     /**
@@ -74,7 +74,7 @@ interface AclInterface {
      * @param string|array $roles A single role name or an array with role names
      * @param string|array $resources A single resource or an array with resources
      */
-	public function deny($roles, $resources);
+    public function deny($roles, $resources);
 
 
     /**
@@ -82,5 +82,5 @@ interface AclInterface {
      * @param string|array $roles A single or multiple role name
      * @param string|array $inherits A single or multiple role name
      */
-	public function inherit($roles, $inherits);
+    public function inherit($roles, $inherits);
 }

@@ -21,36 +21,36 @@ use sFire\Permissions\Exception\InvalidArgumentException;
 class Role {
 
 
-	/**
-	 * Contains the name of the role
-	 * @var string
-	 */
-	private ?string $role;
+    /**
+     * Contains the name of the role
+     * @var string
+     */
+    private ?string $role;
 
 
-	/**
-	 * Contains all the resources
-	 * @var array
-	 */
-	private array $resources = [];
+    /**
+     * Contains all the resources
+     * @var array
+     */
+    private array $resources = [];
 
 
-	/**
-	 * Constructor
-	 * @param string $role The role name
-	 */
-	public function __construct(string $role) {
-		$this -> role = $role;
-	}
+    /**
+     * Constructor
+     * @param string $role The role name
+     */
+    public function __construct(string $role) {
+        $this -> role = $role;
+    }
 
 
-	/**
-	 * Returns the role name
-	 * @return null|string The role name
-	 */
-	public function getRole(): ?string {
-		return $this -> role;
-	}
+    /**
+     * Returns the role name
+     * @return null|string The role name
+     */
+    public function getRole(): ?string {
+        return $this -> role;
+    }
 
 
     /**
@@ -60,95 +60,95 @@ class Role {
      * @return void
      * @throws InvalidArgumentException
      */
-	public function addResources(array $resources, bool $allowed = true): void {
-		
-		if(true === is_string($resources)) {
-			$resources = [$resources];
-		}
+    public function addResources(array $resources, bool $allowed = true): void {
 
-		if(false === is_array($resources)) {
-			throw new InvalidArgumentException(sprintf('Argument 1 passed to %s() must be of the type string or array, "%s" given', __METHOD__, gettype($resources)));
-		}
+        if(true === is_string($resources)) {
+            $resources = [$resources];
+        }
 
-		foreach($resources as $resource) {
-			$this -> resources[$resource] = $allowed;
-		}
-	}
+        if(false === is_array($resources)) {
+            throw new InvalidArgumentException(sprintf('Argument 1 passed to %s() must be of the type string or array, "%s" given', __METHOD__, gettype($resources)));
+        }
 
-
-	/**
-	 * Removes a single resource from current role
-	 * @param string $resource The name of the resource
-	 * @return null|bool Null if resource could not be found, True if resource is successfully removed
-	 */
-	public function removeResource(string $resource): ?bool {
-
-		//Check if resource exists
-		if(true === isset($this -> resources[$resource])) {
-			
-			unset($this -> resources[$resource]);
-			return true;
-		}
-
-		return null;
-	}
+        foreach($resources as $resource) {
+            $this -> resources[$resource] = $allowed;
+        }
+    }
 
 
-	/**
-	 * Retrieve all resources or all matched resources if $match is given as a Regex
-	 * @param null|string $match A Regex string to filter the resources on resource name
-	 * @return array Containing all the found resources
-	 */
-	public function getResources(string $match = null): array {
+    /**
+     * Removes a single resource from current role
+     * @param string $resource The name of the resource
+     * @return null|bool Null if resource could not be found, True if resource is successfully removed
+     */
+    public function removeResource(string $resource): ?bool {
 
-		$resources = [];
+        //Check if resource exists
+        if(true === isset($this -> resources[$resource])) {
 
-		if(null === $match) {
-			return $this -> resources;
-		}
+            unset($this -> resources[$resource]);
+            return true;
+        }
 
-		foreach($this -> resources as $type => $value) {
-
-			if(preg_match(sprintf('#%s#', str_replace('#', '\#', $match)), $type)) {
-				$resources[] = $type;			
-			}
-		}
-
-		return $resources;
-	}
+        return null;
+    }
 
 
-	/**
-	 * Check if a resource exists
-	 * @param string $resource The name of the resource
-	 * @return bool True if resource exists, false if not
-	 */
-	public function hasResource(string $resource): bool {
-		return true === array_key_exists($resource, $this -> resources);
-	}
+    /**
+     * Retrieve all resources or all matched resources if $match is given as a Regex
+     * @param null|string $match A Regex string to filter the resources on resource name
+     * @return array Containing all the found resources
+     */
+    public function getResources(string $match = null): array {
+
+        $resources = [];
+
+        if(null === $match) {
+            return $this -> resources;
+        }
+
+        foreach($this -> resources as $type => $value) {
+
+            if(preg_match(sprintf('#%s#', str_replace('#', '\#', $match)), $type)) {
+                $resources[] = $type;
+            }
+        }
+
+        return $resources;
+    }
 
 
-	/**
-	 * Returns if a role is allowed access to the resource
-	 * @param string $resource The name of the resource
-	 * @return bool True if resource may be accessed, False if resource may not be accessed
-	 */
-	public function isAllowed(string $resource): bool {
-
-		if(true === isset($this -> resources[$resource])) {
-			return $this -> resources[$resource];
-		}
-
-		return false;
-	}
+    /**
+     * Check if a resource exists
+     * @param string $resource The name of the resource
+     * @return bool True if resource exists, false if not
+     */
+    public function hasResource(string $resource): bool {
+        return true === array_key_exists($resource, $this -> resources);
+    }
 
 
-	/**
-	 * Returns if a role is denied access to the resource
-	 * @param string $resource
-	 * @return bool True if resource may not be accessed, False if resource may be accessed
-	 */
-	public function isDenied(string $resource): bool {
-		return !$this -> isAllowed($resource);
-	}
+    /**
+     * Returns if a role is allowed access to the resource
+     * @param string $resource The name of the resource
+     * @return bool True if resource may be accessed, False if resource may not be accessed
+     */
+    public function isAllowed(string $resource): bool {
+
+        if(true === isset($this -> resources[$resource])) {
+            return $this -> resources[$resource];
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Returns if a role is denied access to the resource
+     * @param string $resource
+     * @return bool True if resource may not be accessed, False if resource may be accessed
+     */
+    public function isDenied(string $resource): bool {
+        return !$this -> isAllowed($resource);
+    }
 }
